@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ace Website Building</title>
+    <style>
+        :root {
+            --primary-green: #1b4332;
+            --light-green: #2d6a4f;
+            --bg-white: #ffffff;
+            --off-white: #f8f9fa;
+            --text-dark: #212529;
+            --text-muted: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            letter-spacing: 1px;
+        }
+
+        .spade-icon {
+            font-size: 1.3rem;
+        }
+
+        nav a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 6rem 2rem;
+            background: linear-gradient(to bottom, var(--off-white), var(--bg-white));
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            background-color: var(--primary-green);
+            color: var(--bg-white);
+            padding: 0.85rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--light-green);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-green);
+            color: var(--bg-white);
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 5rem 10%;
+            background-color: var(--bg-white);
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1.0rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Contact / Survey Section (Google Form / Survey Card Styling) */
+        .contact-section {
+            padding: 5rem 2rem;
+            background-color: var(--off-white);
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .contact-container {
+            width: 100%;
+            max-width: 640px;
+            background: var(--bg-white);
+            padding: 0;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            border: 1px solid #dadce0;
+            border-top: 10px solid var(--primary-green);
+            overflow: hidden;
+        }
+
+        .form-header {
+            padding: 24px 24px 12px 24px;
+            border-bottom: 1px solid #dadce0;
+        }
+
+        .contact-container h2 {
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        .contact-container p {
+            color: var(--text-muted);
+            text-align: left;
+            margin-bottom: 0;
+            font-size: 14px;
+        }
+
+        .form-body {
+            padding: 24px;
+        }
+
+        .form-group {
+            background-color: #f8f9fa;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: box-shadow 0.2s;
+        }
+
+        .form-group:focus-within {
+            box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3);
+            border-color: var(--primary-green);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 15px;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            border-bottom: 1px solid #dadce0;
+            background: transparent;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            border-bottom: 2px solid var(--primary-green);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 80px;
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0 24px 24px 24px;
+        }
+
+        .contact-container .btn {
+            width: auto;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background-color: var(--bg-white);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .footer-contact-info {
+            margin-bottom: 1rem;
+            font-weight: 500;
+            color: var(--primary-green);
+        }
+
+        .footer-contact-info a {
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+
+        .footer-contact-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <span class="spade-icon">♠</span> ACE
+        </div>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#contact">Get in Touch</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Excellence in Web Design</h1>
+        <p>Build minimalist, high-performance websites with clean architecture, crisp layouts, and a sophisticated green-and-white aesthetic.</p>
+        
+        <div class="hero-buttons">
+            <a href="#contact" class="btn">Start Your Project</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="feature-card">
+            <h3>Minimalist Frameworks</h3>
+            <p>Clean structures prioritizing whitespace, modern typography, and total visual clarity for your audience.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Lightning Fast</h3>
+            <p>Optimized code and lightweight assets guarantee instantaneous load times straight out of the box.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Responsive Design</h3>
+            <p>Your site will automatically adapt seamlessly across desktop computers, tablets, and mobile screens.</p>
+        </div>
+    </section>
+
+    <!-- Contact & Survey Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <div class="form-header">
+                <h2>Ace Website Building - Project Inquiry</h2>
+                <p>Fill out the quick survey below, and it will be sent directly to your inbox.</p>
+            </div>
+            
+            <form action="https://api.web3forms.com/submit" method="POST">  
+                <input type="hidden" name="access_key" value="efc55b1d-892d-4665-9b5b-f17395574c05">  
+                <input type="hidden" name="_subject" value="New Submission from Ace Website Building!">
+
+                <div class="form-body">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Your answer">  
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="Your email">  
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone number (optional)">  
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Project Details / Message</label>
+                        <textarea id="message" name="message" placeholder="Your answer (optional)"></textarea>  
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer with Contact Info -->
+    <footer>
+        <div class="footer-contact-info">
+            Created by Kohen Veliqi | Direct Contact: <a href="mailto:kohenvel@gmail.com">kohenvel@gmail.com</a>
+        </div>
+        <p>&copy; 2026 Ace Website Building. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
